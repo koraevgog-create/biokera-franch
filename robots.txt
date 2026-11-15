@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://koraevgog-create.github.io/biokera-franch/sitemap.xml
