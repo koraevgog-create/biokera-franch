@@ -64,6 +64,20 @@
 #formats .format-offer-featured .format-offer-action:hover{background:linear-gradient(105deg,#ffb64e,#f26c00)}
 @media(max-width:1090px){#formats .format-cards{gap:15px}#formats .format-offer-body{padding:16px 18px 20px}#formats .format-details>div{grid-template-columns:45% minmax(0,1fr)}#formats .format-details dt,#formats .format-details dd{font-size:12px}#formats .format-subtitle{font-size:13px}#formats .format-offer-action{font-size:15px}}
 @media(max-width:760px){#formats.biokera-formats{padding:65px 0 70px}#formats .container{padding:0 17px}#formats .format-cards{grid-template-columns:1fr;gap:23px;max-width:520px;margin:0 auto}#formats .format-offer-body{padding:20px 23px 23px}#formats .format-offer-body h3{font-size:26px}#formats .format-subtitle{font-size:14px;min-height:0}#formats .format-details>div{grid-template-columns:43% 1fr}#formats .format-details dt,#formats .format-details dd{font-size:14px}#formats .format-offer-photo{aspect-ratio:1.67}#formats .format-heading h2{letter-spacing:-1.5px}#formats .format-desktop{display:none}}
+/* Financial calculator v2 */
+.calc-v2-presets{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:20px}
+.calc-v2-presets button{background:#e8f5f0;border:1px solid #d1e6df;color:#245d57;border-radius:13px;padding:12px 17px;font-size:13px;font-weight:800;transition:.2s}
+.calc-v2-presets button.selected{background:#076762;border-color:#076762;color:white;box-shadow:0 7px 18px #006d6120}
+.calc-v2-presets button:hover{transform:translateY(-2px)}
+.calc-v2{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
+.calc-v2-panel{padding:31px}.calc-v2-group-title{font-size:13px;letter-spacing:.4px;font-weight:800;color:#078d84;margin-bottom:18px}
+.calc-v2-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 28px;margin-bottom:33px}
+.calc-v2-controls:last-child{margin-bottom:0}.calc-v2 .control .labelrow{align-items:start;flex-wrap:wrap;font-size:12px}.calc-v2 .control output{white-space:nowrap}
+.calc-v2 .control input[type=range]{width:100%;cursor:pointer}
+.calc-v2-results{position:sticky;top:103px}.calc-result-eyebrow{font-size:11px;letter-spacing:1.2px;font-weight:800;text-transform:uppercase;color:#a3e9db}
+.calc-utilization{margin:22px 0 15px;padding:15px;background:#ffffff16;border-radius:15px}.util-row{display:flex;justify-content:space-between;gap:10px;font-size:13px}.util-row strong{color:#86eacb}.util-track{background:#ffffff2b;height:9px;overflow:hidden;border-radius:30px;margin-top:12px}.util-track div{height:100%;width:0;background:#8ce5bc;border-radius:30px;transition:width .2s}.capacity-msg{font-size:11px!important;margin:8px 0 0!important;line-height:1.5;color:#d4f3eb!important}.capacity-msg.over{color:#ffd3a0!important}.calc-result-summary{padding:22px 0 16px}.calc-result-summary>span:first-child,.calc-payback>span{font-size:12px;color:#a6e9df}.calc-result-summary .big{margin-top:7px}.calc-negative-hint{display:block;font-size:11px;color:#ffc5a9}.calc-payback{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #ffffff37;padding-top:19px}.calc-payback strong{font-size:22px;white-space:nowrap}.calc-footnote{font-size:11px;line-height:1.7;color:#c4e4de;margin-top:23px}
+@media(max-width:960px){.calc-v2{grid-template-columns:1fr}.calc-v2-results{position:static}}
+@media(max-width:600px){.calc-v2-controls{grid-template-columns:1fr;gap:16px}.calc-v2-panel{padding:22px}.calc-v2-presets button{flex:1 1 100%;text-align:center}.calc-payback{align-items:start;flex-direction:column;gap:4px}.calc-v2-results .big{font-size:34px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Открытие кабинета Biokera — аппаратный массаж и продажа оборудования","url":"https://koraevgog-create.github.io/biokera-franch/","inLanguage":"ru","description":"Презентация бизнес-модели кабинета аппаратного массажа Biokera, услуг, продаж оборудования и сопровождения запуска."}</script>
 </head>
@@ -157,21 +171,47 @@
 <div class="step"><span class="num">4</span><div><strong>Подготовка кабинета</strong><p>Продумываем размещение аппаратов, оформление и путь клиента.</p></div></div>
 <div class="step"><span class="num">5</span><div><strong>Маркетинг и старт</strong><p>Готовим первые объявления, цены, абонементы, партнёрские предложения.</p></div></div>
 <div class="step"><span class="num">6</span><div><strong>Запуск и развитие</strong><p>Помогаем организовать запись, анализировать продажи и улучшать сервис.</p></div></div></div></div></section>
-<section class="section alt" id="calculator"><div class="container"><div class="section-head"><span class="kicker">Интерактивная модель</span><h2>Посчитайте <span style="color:#009e95">свой сценарий</span></h2><p>Меняйте загрузку и цены — калькулятор покажет пример выручки и условного результата. Фактические результаты зависят от формата кабинета, загрузки, цен и организации продаж.</p></div><div class="calc"><div class="card controls">
-<div class="control"><div class="labelrow"><label for="sessions">Разовых сеансов за месяц</label><output id="out-sessions">60</output></div><input type="range" id="sessions" min="0" max="350" value="60" step="5"></div>
-<div class="control"><div class="labelrow"><label for="singleprice">Средняя цена сеанса</label><output id="out-singleprice">1 300 ₽</output></div><input type="range" id="singleprice" min="600" max="3000" value="1300" step="100"></div>
-<div class="control"><div class="labelrow"><label for="subs">Абонементов в месяц</label><output id="out-subs">12</output></div><input type="range" id="subs" min="0" max="100" value="12" step="1"></div>
-<div class="control"><div class="labelrow"><label for="subprice">Цена абонемента</label><output id="out-subprice">9 000 ₽</output></div><input type="range" id="subprice" min="5000" max="22000" value="9000" step="500"></div>
-<div class="control"><div class="labelrow"><label for="goods">Валовая прибыль от продаж товаров / мес.</label><output id="out-goods">20 000 ₽</output></div><input type="range" id="goods" min="0" max="200000" value="20000" step="5000"></div>
-<div class="control"><div class="labelrow"><label for="costs">Расходы кабинета / мес.</label><output id="out-costs">95 000 ₽</output></div><input type="range" id="costs" min="0" max="300000" value="95000" step="5000"></div>
-<div class="price-note">Абонементы рассчитаны как отдельные продажи. Если клиент покупает абонемент, не считайте его посещения повторно как разовые сеансы. Проверьте вместимость аппаратов и число услуг в абонементе.</div></div>
-<div class="results"><span style="color:#89e6d6;text-transform:uppercase;font-size:11px;letter-spacing:1.5px;font-weight:800">Выручка от услуг за месяц</span><div class="big" id="revenue">186 000 ₽</div>
+<section class="section alt" id="calculator"><div class="container">
+<div class="section-head"><span class="kicker">Финансовая модель BIOKERA</span><h2>Рассчитайте экономику <span style="color:#009e95">своего кабинета</span></h2><p>Укажите формат, продажи и расходы — и сразу увидите выручку, загрузку оборудования, месячный результат и ориентир окупаемости. Для начала можно выбрать готовый сценарий.</p></div>
+<div class="calc-v2-presets" role="group" aria-label="Выбор формата бизнеса"><button type="button" data-plan="mini" class="selected" aria-pressed="true">✦ Мини-кабинет</button><button type="button" data-plan="standard" aria-pressed="false">◈ Стандарт</button><button type="button" data-plan="center" aria-pressed="false">✧ Центр</button></div>
+<div class="calc-v2">
+<div class="card calc-v2-panel">
+<div class="calc-v2-group-title">01 / Посещения и загрузка</div>
+<div class="calc-v2-controls">
+<div class="control"><div class="labelrow"><label for="bedcount">Количество кроватей</label><output id="out-bedcount">1</output></div><input type="range" id="bedcount" min="1" max="8" value="1" step="1"></div>
+<div class="control"><div class="labelrow"><label for="days">Рабочих дней в месяц</label><output id="out-days">26</output></div><input type="range" id="days" min="10" max="31" value="26" step="1"></div>
+<div class="control"><div class="labelrow"><label for="capacity">Сеансов на кровать в день</label><output id="out-capacity">10</output></div><input type="range" id="capacity" min="3" max="25" value="10" step="1"></div>
+<div class="control"><div class="labelrow"><label for="singlevisits">Оплаченных разовых сеансов / мес.</label><output id="out-singlevisits">60</output></div><input type="range" id="singlevisits" min="0" max="1600" value="60" step="5"></div>
+<div class="control"><div class="labelrow"><label for="subs">Проданных абонементов / мес.</label><output id="out-subs">12</output></div><input type="range" id="subs" min="0" max="250" value="12" step="1"></div>
+</div>
+<div class="calc-v2-group-title">02 / Цены и продажа оборудования</div>
+<div class="calc-v2-controls">
+<div class="control"><div class="labelrow"><label for="singleprice">Цена разового сеанса</label><output id="out-singleprice">1 300 ₽</output></div><input type="range" id="singleprice" min="500" max="4000" value="1300" step="100"></div>
+<div class="control"><div class="labelrow"><label for="subprice">Стоимость абонемента (10 сеансов)</label><output id="out-subprice">9 000 ₽</output></div><input type="range" id="subprice" min="4000" max="30000" value="9000" step="500"></div>
+<div class="control"><div class="labelrow"><label for="goods">Валовая прибыль от товаров / мес.</label><output id="out-goods">20 000 ₽</output></div><input type="range" id="goods" min="0" max="500000" value="20000" step="5000"></div>
+</div>
+<div class="calc-v2-group-title">03 / Расходы и стартовые инвестиции</div>
+<div class="calc-v2-controls">
+<div class="control"><div class="labelrow"><label for="rent">Аренда</label><output id="out-rent">25 000 ₽</output></div><input type="range" id="rent" min="0" max="250000" value="25000" step="5000"></div>
+<div class="control"><div class="labelrow"><label for="payroll">ФОТ</label><output id="out-payroll">35 000 ₽</output></div><input type="range" id="payroll" min="0" max="500000" value="35000" step="5000"></div>
+<div class="control"><div class="labelrow"><label for="ads">Рекламный бюджет</label><output id="out-ads">20 000 ₽</output></div><input type="range" id="ads" min="0" max="200000" value="20000" step="5000"></div>
+<div class="control"><div class="labelrow"><label for="utilities">Коммунальные и другие расходы</label><output id="out-utilities">15 000 ₽</output></div><input type="range" id="utilities" min="0" max="200000" value="15000" step="5000"></div>
+<div class="control"><div class="labelrow"><label for="tax">Налог, % от выручки услуг</label><output id="out-tax">6%</output></div><input type="range" id="tax" min="0" max="20" value="6" step="1"></div>
+<div class="control"><div class="labelrow"><label for="investment">Стартовые вложения</label><output id="out-investment">350 000 ₽</output></div><input type="range" id="investment" min="0" max="5000000" value="350000" step="50000"></div>
+</div>
+</div>
+<div class="results calc-v2-results" aria-live="polite"><div class="calc-result-eyebrow">Месячная выручка от услуг</div><div class="big" id="revenue">186 000 ₽</div>
+<div class="calc-utilization"><div class="util-row"><span>Загрузка оборудования</span><strong id="utilization">69%</strong></div><div class="util-track"><div id="utilbar"></div></div><p id="capacitywarning" class="capacity-msg"></p></div>
 <div class="resultline"><span>Разовые сеансы</span><strong id="singletotal">78 000 ₽</strong></div>
 <div class="resultline"><span>Абонементы</span><strong id="subtotal">108 000 ₽</strong></div>
 <div class="resultline"><span>Валовая прибыль от товаров</span><strong id="goodstotal">20 000 ₽</strong></div>
-<div class="resultline"><span>Расходы кабинета</span><strong id="costtotal">95 000 ₽</strong></div>
-<div style="margin-top:25px"><span style="font-size:12px;color:#9fdfd4">Условный результат до налогов и иных неучтённых затрат</span><div class="big" id="profit">111 000 ₽</div></div>
-<small>Модель: выручка услуг + валовая прибыль от товаров − заданные расходы. Для индивидуального бизнес-плана дополнительно учтём налоги, стоимость оборудования, амортизацию и особенности вашего города.</small><a class="btn btn-orange" href="#contact" style="margin-top:22px;width:100%">Обсудить мой расчёт ↗</a></div></div></div></section>
+<div class="resultline"><span>Постоянные и рекламные расходы</span><strong id="costtotal">95 000 ₽</strong></div>
+<div class="resultline"><span>Налог по выбранной модели</span><strong id="taxtotal">11 160 ₽</strong></div>
+<div class="calc-result-summary"><span>Расчётный результат за месяц</span><div class="big" id="profit">99 840 ₽</div><span class="calc-negative-hint" id="profitnote"></span></div>
+<div class="calc-payback"><span>Ориентир окупаемости стартовых вложений</span><strong id="payback">4 месяца</strong></div>
+<div class="calc-footnote">Выручка услуг = разовые посещения + проданные абонементы; для оценки загрузки каждый абонемент учитывается как 10 будущих посещений. Товары включены по валовой прибыли после их закупки. Налог моделируется как процент от выручки услуг, а ФОТ — заданной суммой. Итог зависит от фактической загрузки, расходов и условий налогообложения.</div>
+<a class="btn btn-orange" href="#contact" style="margin-top:22px;width:100%">Обсудить мой расчёт ↗</a>
+</div></div></div></section>
 <section class="section light" id="support"><div class="container"><div class="two-col" style="align-items:center"><div><span class="kicker">Возможность для старта</span><h2>А если стартового капитала пока нет?</h2><p style="color:var(--muted)">Для некоторых граждан доступен социальный контракт на открытие собственного дела — <b>до 350 000 ₽</b> государственной поддержки. Можно рассмотреть этот инструмент при подготовке проекта кабинета.</p><ul class="checks"><li>Проверка основных критериев участия</li><li>Подготовка бизнес-плана и сметы</li><li>Консультации по документам и этапам подачи</li></ul><p class="disclaimer">Поможем разобраться с условиями программы и подготовить бизнес-план. Одобрение и размер поддержки определяет соцзащита; расходы согласуются по утверждённой смете.</p><a class="btn btn-dark" href="#contact">Узнать, подойдёт ли мне соцконтракт →</a></div>
 <div class="dark-panel" style="text-align:center"><span style="font-size:58px">✦</span><div style="font-size:14px;color:#bce8dd">Государственная поддержка</div><div style="font-size:clamp(42px,5vw,68px);font-weight:800;letter-spacing:-3px;margin:9px 0">до 350 000 ₽</div><p>Один из возможных источников финансирования проекта — при соответствии установленным условиям.</p><div style="border-top:1px solid #ffffff44;margin-top:26px;padding-top:20px;font-size:12px">Сопроводим подготовку проекта и документов для рассмотрения.</div></div></div></div></section>
 <section class="section alt faq" id="faq"><div class="container"><div class="section-head"><span class="kicker">Частые вопросы</span><h2>Что важно знать <span style="color:#009b90">до открытия</span></h2></div>
@@ -190,7 +230,20 @@
 <script>
 (function(){
 const menu=document.getElementById('menu'),burger=document.getElementById('burger');burger.onclick=()=>{let o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false')};menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded','false')}));
-const ids=['sessions','singleprice','subs','subprice','goods','costs'];const rub=v=>new Intl.NumberFormat('ru-RU').format(v)+' ₽';function update(){let v={};ids.forEach(id=>{v[id]=Number(document.getElementById(id).value);document.getElementById('out-'+id).textContent=id==='sessions'||id==='subs'?v[id]:rub(v[id])});let one=v.sessions*v.singleprice,subs=v.subs*v.subprice,total=one+subs,profit=total+v.goods-v.costs;document.getElementById('revenue').textContent=rub(total);document.getElementById('singletotal').textContent=rub(one);document.getElementById('subtotal').textContent=rub(subs);document.getElementById('goodstotal').textContent=rub(v.goods);document.getElementById('costtotal').textContent=rub(v.costs);document.getElementById('profit').textContent=rub(profit)}ids.forEach(id=>document.getElementById(id).addEventListener('input',update));update();
+const ids=['bedcount','days','capacity','singlevisits','subs','singleprice','subprice','goods','rent','payroll','ads','utilities','tax','investment'];
+const rub=v=>new Intl.NumberFormat('ru-RU').format(Math.round(v))+' ₽';
+const plans={mini:{bedcount:1,days:26,capacity:10,singlevisits:60,subs:12,singleprice:1300,subprice:9000,goods:20000,rent:25000,payroll:35000,ads:20000,utilities:15000,tax:6,investment:350000},standard:{bedcount:2,days:26,capacity:10,singlevisits:175,subs:35,singleprice:1300,subprice:9000,goods:65000,rent:50000,payroll:80000,ads:40000,utilities:25000,tax:6,investment:700000},center:{bedcount:4,days:26,capacity:12,singlevisits:300,subs:75,singleprice:1500,subprice:11000,goods:180000,rent:120000,payroll:220000,ads:80000,utilities:55000,tax:6,investment:1800000}};
+function updateCalc(){const v={};ids.forEach(id=>{v[id]=Number(document.getElementById(id).value);const out=document.getElementById('out-'+id);out.textContent=['bedcount','days','capacity','singlevisits','subs'].includes(id)?String(v[id]):id==='tax'?v[id]+'%':rub(v[id])});
+const one=v.singlevisits*v.singleprice,sub=v.subs*v.subprice,services=one+sub,cost=v.rent+v.payroll+v.ads+v.utilities,tax=services*v.tax/100,result=services+v.goods-cost-tax;
+const available=v.bedcount*v.days*v.capacity,planned=v.singlevisits+v.subs*10,load=available?planned/available*100:0;
+const money={revenue:services,singletotal:one,subtotal:sub,goodstotal:v.goods,costtotal:cost,taxtotal:tax,profit:result};Object.entries(money).forEach(([id,val])=>document.getElementById(id).textContent=rub(val));
+document.getElementById('utilization').textContent=Math.round(load)+'%';document.getElementById('utilbar').style.width=Math.min(load,100)+'%';
+const msg=document.getElementById('capacitywarning');msg.classList.toggle('over',load>100);msg.textContent=(planned+' посещений из '+available+' доступных за месяц.')+(load>100?' Продажи требуют большей вместимости — скорректируйте загрузку или число кроватей.':'');
+document.getElementById('payback').textContent=v.investment===0?'Вложения не указаны':result<=0?'Не рассчитывается':Math.ceil(v.investment/result)+' мес.';
+document.getElementById('profitnote').textContent=result<0?'При выбранных параметрах расходы превышают доходы.':'';
+}
+ids.forEach(id=>document.getElementById(id).addEventListener('input',()=>{document.querySelectorAll('[data-plan]').forEach(b=>{b.classList.remove('selected');b.setAttribute('aria-pressed','false')});updateCalc()}));
+document.querySelectorAll('[data-plan]').forEach(button=>button.addEventListener('click',()=>{const values=plans[button.dataset.plan];Object.entries(values).forEach(([id,val])=>{document.getElementById(id).value=val});document.querySelectorAll('[data-plan]').forEach(b=>{const yes=b===button;b.classList.toggle('selected',yes);b.setAttribute('aria-pressed',yes?'true':'false')});updateCalc()}));updateCalc();
 const form=document.getElementById('leadform'),status=document.getElementById('formstatus'),copy=document.getElementById('copyrequest');let request='';form.onsubmit=e=>{e.preventDefault();const fd=new FormData(form);request='Заявка на открытие кабинета Biokera\nИмя: '+fd.get('name')+'\nГород: '+fd.get('city')+'\nКонтакт: '+fd.get('contact')+'\nИнтерес: '+fd.get('interest');status.textContent='Текст заявки сформирован. Она ещё не отправлена — нажмите «Скопировать заявку» и передайте её нашему менеджеру через согласованный канал связи.';copy.hidden=false;};copy.onclick=async()=>{try{await navigator.clipboard.writeText(request);status.textContent='Текст заявки скопирован. Отправьте его нашему менеджеру.'}catch(e){status.textContent=request}};
 document.getElementById('year').textContent=new Date().getFullYear();
 })();
