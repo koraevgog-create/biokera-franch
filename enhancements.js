@@ -11,3 +11,6 @@ document.querySelectorAll('#calculator input[type="range"]').forEach(range=>{
 });
 const menuEl=document.getElementById('menu'),burgerEl=document.getElementById('burger');
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuEl.classList.contains('open')){menuEl.classList.remove('open');burgerEl.setAttribute('aria-expanded','false');burgerEl.focus();}});
+
+// Keep the mobile next step visible without covering the hero or the form.
+(()=>{const bar=document.getElementById('mobile-contact'),hero=document.querySelector('.hero'),contact=document.getElementById('contact');if(!bar||!hero||!contact||!('IntersectionObserver' in window))return;let heroVisible=true,contactVisible=false;const update=()=>bar.hidden=heroVisible||contactVisible;const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.target===hero)heroVisible=e.isIntersecting;if(e.target===contact)contactVisible=e.isIntersecting;});update();});observer.observe(hero);observer.observe(contact);})();
